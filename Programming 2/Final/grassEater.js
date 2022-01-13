@@ -79,8 +79,8 @@ class GrassEater {
             let newX = newCell1[0];
             let newY = newCell1[1];
             matrix[newY][newX] = this.index;
-            matrix[this.y][this.x] = 0;
-
+            matrix[this.y][this.x] = 0 ;
+ 
 
 
             for (let i in grassArr) {

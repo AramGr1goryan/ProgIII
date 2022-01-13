@@ -111,7 +111,7 @@ class GrassEaterEater {
             }
             this.y = newY;
             this.x = newX;
-            this.energy += 2;
+            this.energy +=2;
 this.mul();
         }
         else{

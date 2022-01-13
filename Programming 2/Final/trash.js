@@ -7,7 +7,7 @@ class trash{
     }
 
     die() {
-        // this.year++;
+        //  this.year++;
         // console.log(this.year);
         if (this.year >= 1000) {
             matrix[this.y][this.x] = 1;

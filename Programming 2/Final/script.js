@@ -6,7 +6,6 @@ let side = 10;
 let grassArr = [];
 let grassEaterArr = [];
 let grassEaterEaterArr=[];
-
 let trashArr = [];
 let trasherArr = [];
 

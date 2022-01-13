@@ -7,7 +7,7 @@ class trasher {
         this.directions = [];
     }
 
-    getNewCoordinates() {
+     getNewCoordinates() {
         this.directions = [
             [this.x - 2, this.y - 2],
             [this.x - 1, this.y - 2],
