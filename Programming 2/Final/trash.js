@@ -1,14 +1,12 @@
-class trash{
-    consturctor(x, y, index) {
-        this.x = x;
-        this.y = y;
-        this.index = index;
+class trash extends LivingCreature {
+
+    constructor(x, y, index) {
+        super(x, y, index);
         this.year = 1;
+
     }
 
     die() {
-        //  this.year++;
-        // console.log(this.year);
         if (this.year >= 1000) {
             matrix[this.y][this.x] = 1;
 
@@ -23,6 +21,5 @@ class trash{
     }
     energyst() {
         this.year++;
-        // console.log(this.year);
     }
 }
