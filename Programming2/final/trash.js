@@ -1,4 +1,6 @@
-class trash extends LivingCreature {
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class trash extends LivingCreature {
 
     constructor(x, y, index) {
         super(x, y, index);

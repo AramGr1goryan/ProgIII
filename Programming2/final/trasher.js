@@ -1,4 +1,6 @@
-class trasher extends LivingCreature {
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class trasher extends LivingCreature {
 
 constructor(x,y,index){
     super(x,y, index);
@@ -12,8 +14,11 @@ constructor(x,y,index){
     }
 
     move() {
-        var newCell = random(this.chooseCell(0))
-        var xCell = random(this.chooseCell(1))
+        empty = this.chooseCell(0);
+        grC = this.chooseCell(1);
+        var newCell = empty[Math.floor(Math.random() * empty.length)]
+        var xCell = grC[Math.floor(Math.random() * grC.length)]
+      
         if (newCell) {
             this.diesel--;
             var newX = newCell[0];
