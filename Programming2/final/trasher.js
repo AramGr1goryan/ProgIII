@@ -1,3 +1,4 @@
+const GrassEaterEater = require('./GrassEaterEater');
 let LivingCreature = require('./LivingCreature')
 
 module.exports = class trasher extends LivingCreature {
@@ -14,8 +15,8 @@ constructor(x,y,index){
     }
 
     move() {
-        empty = this.chooseCell(0);
-        grC = this.chooseCell(1);
+        var empty = this.chooseCell(0);
+        var grC = this.chooseCell(1);
         var newCell = empty[Math.floor(Math.random() * empty.length)]
         var xCell = grC[Math.floor(Math.random() * grC.length)]
       
@@ -44,7 +45,9 @@ constructor(x,y,index){
         
     }
     eat() {
-        var trash = random(this.chooseCell(4));
+        var grfourC = this.chooseCell(4);
+        var trash = grfourC[Math.floor(Math.random() * grfourC.length)]
+        
        
         if (trash) {
             var newX = trash[0];
@@ -74,7 +77,7 @@ constructor(x,y,index){
             matrix[this.y][this.x] = 3;
             for (var i in trasherArr) {
                 if (this.x == trasherArr[i].x && this.y == trasherArr[i].y) {
-                    grassEaterEaterArr.push(new GrassEaterEater(this.x,this.y,3));
+                    grassEaterEaterArr.push(new GrassEaterEater(this.x, this.y,3));
                     break;
                 }
             }
