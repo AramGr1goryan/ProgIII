@@ -4,8 +4,15 @@ body{
 canvas{
     display: block;
     margin:auto;
+    margin-bottom: 3%;
     border-radius: 20px;
     box-shadow: 0 0 40px rgb(255, 255, 255);
+    
+}
+.weather{
+  display: inline;
+  margin: auto;
+  color: rgb(245, 227, 227);
 }
 
 /* a:hover{
@@ -60,7 +67,7 @@ canvas{
     text-decoration: none;
   }
   
-  /*btn_background*/
+ 
   .effect01 {
     color: #FFF;
     border: 4px solid rgb(215 19 104);
@@ -78,7 +85,7 @@ canvas{
 
   }
   
-  /*btn_text*/
+ 
   .effect01 span {
     transition: all 0.2s ease-out;
     z-index: 2;
@@ -89,7 +96,7 @@ canvas{
     
   }
   
-  /*highlight*/
+ 
   .effect01:after {
     background: #FFF;
     border: 0px solid rgb(215 19 104);
@@ -102,7 +109,7 @@ canvas{
     -webkit-transform: rotate(35deg);
             transform: rotate(35deg);
     width: 50px;
-    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);/*easeOutCirc*/
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     z-index: 1;
   }
   .effect01:hover:after {

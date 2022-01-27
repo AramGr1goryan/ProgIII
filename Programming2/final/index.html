@@ -34,18 +34,7 @@
 
 </head>
    <body>
-      <div>
-         <div class="container">
-            <a href="#" class="btn effect01" target="_blank"><span>Kill All</span></a>
-            <a href="#" class="btn effect01" target="_blank"><span>Sp Grass</span></a>
-            <a href="#" class="btn effect01" target="_blank"><span>Sp GrassEater</span></a>
-            <a href="#" class="btn effect01" target="_blank"><span>Sp Boom</span></a>
-            <a href="#" class="btn effect01" target="_blank"><span>Sp Predator</span></a>
-            <a href="#" class="btn effect01" target="_blank"><span>Kill Predators</span></a>
-            <a href="#" class="btn effect01" target="_blank"><span>Weather</span></a>
-
-          </div>
-      </div>
+ 
 
  
 
@@ -122,5 +111,21 @@
          </tr>
  
      </table>
+     <div>
+        <div class="container">
+           <a onclick="kill()" class="btn effect01" target="_blank"><span>Kill All</span></a>
+           <a onclick="spawnGr()" class="btn effect01" target="_blank"><span>Sp Grass</span></a>
+           <a onclick="spawnGrEater()" class="btn effect01" target="_blank"><span>Sp GrassEater</span></a>
+           <a onclick="spawnBoom()" class="btn effect01" target="_blank"><span>Sp Boom</span></a>
+           <a onclick="spawnPr()" class="btn effect01" target="_blank"><span>Sp Predator</span></a>
+           <a onclick="killPr()" class="btn effect01" target="_blank"><span>Kill Predators</span></a>
+           <a onclick="changeWeather()" class="btn effect01" target="_blank"><span>Weather</span></a>
+            
+          
+        </div> 
+
+        </div>
+        <div class="weather"><h3 style="display: inline-block;">Weather: <h3 style="display: inline-block;" id="weather"></h3></h3></div>
+    </div>
    </body>
 </html>

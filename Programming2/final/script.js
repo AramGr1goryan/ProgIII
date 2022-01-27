@@ -9,6 +9,8 @@ function setup() {
 
     socket.on ('weather', function(data){
         weather1 = data;
+        document.getElementById("weather").innerHTML = weather1;
+
     })
     
 weathSwitcher = {
@@ -18,10 +20,6 @@ weathSwitcher = {
     autumn: "#C75520"
 }
 
-console.log();
-// console.log(weather1);
-
-
 function painter(matrix) {
 
     for (let y = 0; y < matrix.length; y++) {
@@ -29,9 +27,7 @@ function painter(matrix) {
             
         
             if (matrix[y][x] == 1) {
-            
                 fill(weathSwitcher[weather1]);
-                console.log(weathSwitcher[weather1])
             }
             else if (matrix[y][x] == 2) {
                 fill('yellow');
@@ -50,13 +46,36 @@ function painter(matrix) {
             else {
                 fill('gray');
             }
-            // square(x*side, y*side, 10, 10);
-            // circle(x*side, y*side, 10);
             rect(x * side, y * side, side, side);
-            // triangle(3, 7, 5, 2, 8, 7)
+           
         }
     }
 
 
 }
 socket.on('send matrix', painter);
+
+function kill(){
+socket.emit('killAll');
+}
+
+function spawnGr(){
+    socket.emit('spawnGr');
+}
+
+function spawnGrEater(){
+    socket.emit('spawnGrEater');
+}
+
+function spawnPr(){
+    socket.emit('spawnPr');
+}
+function killPr(){
+    socket.emit('killPr')
+}
+function spawnBoom(){
+    socket.emit('spawnBoom');
+}
+function changeWeather(){
+    socket.emit('chWeather');
+}

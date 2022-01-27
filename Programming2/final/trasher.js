@@ -1,5 +1,6 @@
 const GrassEaterEater = require('./GrassEaterEater');
-let LivingCreature = require('./LivingCreature')
+let LivingCreature = require('./LivingCreature');
+const trash = require('./trash');
 
 module.exports = class trasher extends LivingCreature {
 
@@ -74,10 +75,10 @@ constructor(x,y,index){
 
     die() {
         if (this.diesel <= 0) {
-            matrix[this.y][this.x] = 3;
+            matrix[this.y][this.x] = 4;
             for (var i in trasherArr) {
                 if (this.x == trasherArr[i].x && this.y == trasherArr[i].y) {
-                    grassEaterEaterArr.push(new GrassEaterEater(this.x, this.y,3));
+                    trashArr.push(new trash(this.x, this.y,4));
                     break;
                 }
             }
