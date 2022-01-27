@@ -9,7 +9,30 @@
     <script src="script.js"></script>   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
          
-   </head>
+    <style>
+      table {
+          position: relative;
+          /* display: inline; */
+          bottom: 0;
+          margin: auto;
+          margin-bottom: 3%;
+          background-color: gray;
+      }
+
+      td{
+          border: 1px solid black;
+          max-width: 210px;
+          height: 50px;
+          background-color: rgba(0, 0, 0, .6);
+          color: white;
+          padding: 1px;
+
+      }
+
+   
+  </style>
+
+</head>
    <body>
       <div>
          <div class="container">
@@ -23,5 +46,81 @@
 
           </div>
       </div>
+
+ 
+
+     <table>
+         <tr>
+             <td>Գույն</td>
+             <td>Անվանում</td>
+             <td>Շարժվում է</td>
+             <td>Ուտում է</td>
+             <td>Բազմանում է</td>
+             <td>Մահանում է</td>
+             <td>Ինդեքս</td>
+         </tr>
+ 
+         <tr>
+             <td style="background-color:gray"></td>
+             <td>Դատարկ վանդակներ</td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td>0</td>
+         </tr>
+ 
+         <tr>
+             <td style="background-color:green"></td>
+             <td>Խոտ</td>
+             <td></td>
+             <td></td>
+             <td>Մոտակա 8 վանդակներում, 4 տակտը մեկ</td>
+             <td></td>
+             <td>1</td>
+         </tr>
+ 
+         <tr>
+             <td style="background-color:yellow"></td>
+             <td>Խոտակեր</td>
+             <td>Մոտակա 8 վանդակներում, էներգիան քչանում է 1֊ով</td>
+             <td>Խոտերին, մոտակա 8 վանդակներում, ուտելիս էներգիան ավելանում է 2֊ով</td>
+             <td>Բազմանում է մոտակա տարածքներում, երբ էներգիան 8֊ից ավել է</td>
+             <td>Սատկում է, երբ էներգիան փոքր է 0֊ից, սատկելուց հետո առաջացնում է աղբ</td>
+             <td>2</td>
+         </tr>
+ 
+         <tr>
+             <td style="background-color:red"></td>
+             <td>Գիշատիչ</td>
+             <td>Մոտակա 2 շարք վանդակներում՝ խոտերի, դատարկ վանդակների վրայով ու աղբերի վրայով, էներգիան քչանում է 1-ով(խոտերի
+                 վրայով քայլելիս) կամ 2-ով(դատարկ վանդակների կամ աղբերի վրայով քայլելիս)</td>
+             <td>Խոտակերներին, մոտակա 2 շարք վանդակներում , ուտելելիս էներգիան ավելանում է 2֊ով</td>
+             <td>Բազմանում է մոտակա դատարկ վանդակներում, երբ էներգիան 15֊ից ավել է</td>
+             <td>Սատկում է, երբ էներգիան փոքր է 0֊ից</td>
+             <td>3</td>
+         </tr>
+ 
+         <tr>
+             <td style="background-color: #00D8FF"></td>
+             <td>Աղբ</td>
+             <td></td>
+             <td></td>
+             <td>.......</td>
+             <td>.......</td>
+             <td>4</td>
+         </tr>
+ 
+         <tr>
+             <td style="background-color: #900073"></td>
+             <td>Աղբատար մեքենա</td>
+             <td>........</td>
+             <td>.......</td>
+             <td></td>
+             <td>........</td>
+             <td>5</td>
+         </tr>
+ 
+     </table>
    </body>
 </html>

@@ -28,6 +28,9 @@ const trash = require('./trash')
 const trasher = require('./trasher')
 
 
+let weathers = ["winter", "spring", "summer", "autumn"];
+
+
 function rand(min, max) {
     return Math.random() * (max - min) + min;
   }
@@ -100,6 +103,16 @@ function gameScripter() {
     io.sockets.emit('send matrix', matrix);
 }
 
+let i = weathers.length;
+
+function weat(){
+
+    let weather;
+    weather = weathers[i--];
+    if(i<0){i=3}  
+    io.sockets.emit('weather', weather);
+}
+setInterval(weat, 1000);
 
 setInterval(gameScripter, 1000);
 
