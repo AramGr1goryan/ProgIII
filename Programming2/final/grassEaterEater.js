@@ -93,7 +93,7 @@ module.exports = class GrassEaterEater extends LivingCreature {
             matrix[this.y][this.x] = 2;
             for (var i in grassEaterEaterArr) {
                 if (this.x == grassEaterEaterArr[i].x && this.y == grassEaterEaterArr[i].y) {
-                    // matrix[this.y][this.x] = 2;
+                    matrix[this.y][this.x] = 2;
                     grassEaterArr.push(new GrassEater(this.x, this.y, 2));
                     break;
                 }

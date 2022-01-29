@@ -1,18 +1,40 @@
 var socket = io();
 let side = 15;
-let weather1= 'winter';
+let weather1= "winter";
+
+
+function changer(){
+    if(weather1 == "winter"){
+        document.getElementById("wstyle").style.color = "#A81164";
+    }
+    else{
+        document.getElementById("wstyle").style.color = "white";
+    }
+}
 function setup() {
     // frameRate(30);
     background('#acacac');
     createCanvas(50 * side, 50 * side);
+    document.getElementById("weather").innerHTML = weather1;
+    document.getElementById("wstyle").style.backgroundColor = weathSwitcher[weather1]
+    changer();
 }
 
     socket.on ('weather', function(data){
         weather1 = data;
         document.getElementById("weather").innerHTML = weather1;
-
+        document.getElementById("wstyle").style.backgroundColor = weathSwitcher[weather1]
+        changer();
     })
     
+    socket.on ("send datas", function(counts){
+        // console.log(counts);
+        document.getElementById("grass").innerHTML = counts.grass;
+        document.getElementById("grassEater").innerHTML = counts.grassEater;
+        document.getElementById("pred").innerHTML = counts.grassEaterEater;
+        document.getElementById("trash").innerHTML = counts.trashes;
+        document.getElementById("trasher").innerHTML = counts.trashers;
+    })
 weathSwitcher = {
     winter: "white",
     spring: "#62D319",
@@ -24,7 +46,7 @@ function painter(matrix) {
 
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
-            
+          
         
             if (matrix[y][x] == 1) {
                 fill(weathSwitcher[weather1]);
