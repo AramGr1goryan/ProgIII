@@ -78,6 +78,7 @@ constructor(x,y,index){
             matrix[this.y][this.x] = 4;
             for (var i in trasherArr) {
                 if (this.x == trasherArr[i].x && this.y == trasherArr[i].y) {
+                    trasherArr.splice(i,1);
                     trashArr.push(new trash(this.x, this.y,4));
                     break;
                 }

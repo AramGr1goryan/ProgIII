@@ -31,7 +31,7 @@ module.exports = class GrassEaterEater extends LivingCreature {
             this.x = newX;
         }
 
-        else if (dCell) {
+       if (dCell) {
             this.energy--;
             var newX1 = dCell[0];
             var newY1 = dCell[1];
@@ -93,8 +93,9 @@ module.exports = class GrassEaterEater extends LivingCreature {
             matrix[this.y][this.x] = 2;
             for (var i in grassEaterEaterArr) {
                 if (this.x == grassEaterEaterArr[i].x && this.y == grassEaterEaterArr[i].y) {
-                    matrix[this.y][this.x] = 2;
+                    matrix[this.y][this.x] = 2; 
                     grassEaterArr.push(new GrassEater(this.x, this.y, 2));
+                    grassEaterEaterArr.splice(i,1)
                     break;
                 }
             }

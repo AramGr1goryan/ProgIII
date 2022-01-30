@@ -98,10 +98,12 @@ module.exports = class GrassEater extends LivingCreature {
         if (this.energy <= 0) {
             matrix[this.y][this.x] = 4;
             for (let i in grassEaterArr) {
+                
                 if (this.x == grassEaterArr[i].x && this.y == grassEaterArr[i].y) {
                     trashArr.push(new trash(this.x, this.y, 4));
-                    break;
+                    grassEaterArr.splice(i,1)
                 }
+                break;
             }
 
         }

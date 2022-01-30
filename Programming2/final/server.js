@@ -85,7 +85,10 @@ function ObjectCreator(matrix) {
 
 function gameScripter() {
     for (let i in grassArr) {
+        if(grassArr.length <2500){
         grassArr[i].mul();
+        }
+       
     }
     for (let i in grassEaterArr) {
         grassEaterArr[i].eat();
@@ -95,17 +98,19 @@ function gameScripter() {
     }
     for (let i in trashArr) {
         trashArr[i].die();
-        trashArr[i].energyst();
+        // trashArr[i].energyst();
     }
     for (let i in trasherArr) {
+        if(trasherArr.length<2500){
         trasherArr[i].move();
         trasherArr[i].eat();
+        }
         trasherArr[i].die();
     }
     io.sockets.emit('send matrix', matrix);
 }
 
-let i = weathers.length-1;
+let i = weathers.length - 1;
 
 function weat() {
 
@@ -188,7 +193,7 @@ function changeWeather() {
     weat();
 }
 
-function alldatas(){
+function alldatas() {
     countd = {
         grass: grassArr.length,
         grassEater: grassEaterArr.length,
@@ -196,8 +201,8 @@ function alldatas(){
         trashes: trashArr.length,
         trashers: trasherArr.length
     }
-    fs.writeFile("statistics.json", JSON.stringify(countd), function(){
-        console.log("send")
+    fs.writeFile("statistics.json", JSON.stringify(countd), function () {
+        // console.log("send")
     })
     io.sockets.emit("send datas", countd)
 }
