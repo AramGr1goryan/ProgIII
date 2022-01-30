@@ -24,7 +24,8 @@ function setup() {
         weather1 = data;
         document.getElementById("weather").innerHTML = weather1;
         document.getElementById("wstyle").style.backgroundColor = weathSwitcher[weather1]
-        changer();
+        
+          changer();
     })
     
     socket.on ("send datas", function(counts){
@@ -34,6 +35,7 @@ function setup() {
         document.getElementById("pred").innerHTML = counts.grassEaterEater;
         document.getElementById("trash").innerHTML = counts.trashes;
         document.getElementById("trasher").innerHTML = counts.trashers;
+        document.getElementById("grP").value = counts.grass / 100;
     })
 weathSwitcher = {
     winter: "white",
