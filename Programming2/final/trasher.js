@@ -66,9 +66,7 @@ constructor(x,y,index){
             }
             this.y = newY;
             this.x = newX;
-            this.diesel++;
-
-        }
+           }
         
 
     }

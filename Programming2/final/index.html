@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css">
+
     <script src="socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+
 
     <style>
         table {
@@ -47,7 +50,7 @@
         </tr>
 
         <tr>
-            <td style="background-color:gray"></td>
+            <td style="background-color:#31303C"></td>
             <td>Դատարկ վանդակներ</td>
             <td></td>
             <td></td>
@@ -71,40 +74,42 @@
             <td>Խոտակեր</td>
             <td>Մոտակա 8 վանդակներում, էներգիան քչանում է 1֊ով</td>
             <td>Խոտերին, մոտակա 8 վանդակներում, ուտելիս էներգիան ավելանում է 2֊ով</td>
-            <td>Բազմանում է մոտակա տարածքներում, երբ էներգիան 8֊ից ավել է</td>
-            <td>Սատկում է, երբ էներգիան փոքր է 0֊ից, սատկելուց հետո առաջացնում է աղբ</td>
+            <td>Մոտակա դատարկ վանդակներում, երբ էներգիան 8֊ից ավել է</td>
+            <td>Երբ էներգիան փոքր է 0֊ից, մահից հետո առաջացնում է աղբ</td>
             <td>2</td>
         </tr>
 
         <tr>
             <td style="background-color:red"></td>
             <td>Գիշատիչ</td>
-            <td>Մոտակա 2 շարք վանդակներում՝ խոտերի, դատարկ վանդակների վրայով ու աղբերի վրայով, էներգիան քչանում է
+            <td>Մոտակա 2 շարք վանդակներում՝ խոտերի, դատարկ վանդակների վրայով, էներգիան քչանում է
                 1-ով(խոտերի
-                վրայով քայլելիս) կամ 2-ով(դատարկ վանդակների կամ աղբերի վրայով քայլելիս)</td>
+                վրայով քայլելիս) կամ 2-ով(դատարկ վանդակների վրայով քայլելիս)</td>
             <td>Խոտակերներին, մոտակա 2 շարք վանդակներում , ուտելելիս էներգիան ավելանում է 2֊ով</td>
-            <td>Բազմանում է մոտակա դատարկ վանդակներում, երբ էներգիան 15֊ից ավել է</td>
-            <td>Սատկում է, երբ էներգիան փոքր է 0֊ից</td>
+            <td>Մոտակա դատարկ վանդակներում, երբ էներգիան 15֊ից ավել է</td>
+            <td>Երբ էներգիան փոքր է 0֊ից, առաջացնում է խոտակեր</td>
             <td>3</td>
         </tr>
 
         <tr>
             <td style="background-color: #00D8FF"></td>
             <td>Աղբ</td>
-            <td></td>
-            <td></td>
-            <td>.......</td>
-            <td>.......</td>
+            <td>Չի շարժվում</td>
+            <td>Չի սնվում</td>
+            <td>Առաջանում է այլ կերպարների մահանալուց</td>
+            <td>100 «տարին» մեկ անգամ դառնում է խոտ </td>
             <td>4</td>
         </tr>
 
         <tr>
             <td style="background-color: #900073"></td>
             <td>Աղբատար մեքենա</td>
-            <td>........</td>
-            <td>.......</td>
-            <td></td>
-            <td>........</td>
+            <td>Մոտակա 2 շարք վանդակներում՝ խոտերի, դատարկ վանդակների վրայով, էներգիան քչանում է
+                1-ով(խոտերի
+                վրայով քայլելիս) կամ 2-ով(դատարկ վանդակների վրայով քայլելիս) </td>
+            <td>Հավաքում է աղբ, վառելիք չի ավելանում</td>
+            <td>Չի Բազմանում</td>
+            <td>Վառելիքը սպառվելուց, դառնում է աղբ</td>
             <td>5</td>
         </tr>
     </table>   
@@ -126,14 +131,17 @@
         
         </tr>
     </table>
-    <label for="file">Downloading progress:</label>
-    <progress id="grP" value="32" max="100"> 32% </progress>
+    
+    <div>
+      <canvas id="myChart" width="400" height="400"></canvas>
+      </div>
+
     <div>
         <div class="container">
             <a onclick="kill()" class="btn effect01" target="_blank"><span>Kill All</span></a>
             <a onclick="spawnGr()" class="btn effect01" target="_blank"><span>Sp Grass</span></a>
             <a onclick="spawnGrEater()" class="btn effect01" target="_blank"><span>Sp GrassEater</span></a>
-            <a onclick="spawnBoom()" class="btn effect01" target="_blank"><span>Sp Boom</span></a>
+            <a onclick="spawnBoom()" class="btn effect01" target="_blank"><span>Sp Garbage T</span></a>
             <a onclick="spawnPr()" class="btn effect01" target="_blank"><span>Sp Predator</span></a>
             <a onclick="killPr()" class="btn effect01" target="_blank"><span>Kill Predators</span></a>
             <a onclick="changeWeather()" class="btn effect01" target="_blank"><span>Weather</span></a>

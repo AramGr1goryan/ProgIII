@@ -60,7 +60,7 @@ module.exports = class GrassEater extends LivingCreature {
             let newGrassEater = new GrassEater(newCell[0], newCell[1], this.index);
             grassEaterArr.push(newGrassEater);
             matrix[newCell[1]][newCell[0]] = this.index;
-            this.energy = 5;
+            this.energy = 3;
         }
     }
 

@@ -1,6 +1,11 @@
 var socket = io();
 let side = 15;
 let weather1= "winter";
+let myChart;
+
+
+  
+
 
 
 function changer(){
@@ -13,18 +18,62 @@ function changer(){
 }
 function setup() {
     // frameRate(30);
-    background('#acacac');
+    background('#31303C');
     createCanvas(50 * side, 50 * side);
     document.getElementById("weather").innerHTML = weather1;
     document.getElementById("wstyle").style.backgroundColor = weathSwitcher[weather1]
+    const data = {
+        labels: [
+          'Grass',
+          'GrassEater',
+          'Predator',
+          'Trashes',
+          'Garbage Trucks'
+        ],
+        datasets: [{
+          label: 'Chart of game',
+          data: [15,15,15,15,15],
+          backgroundColor: [
+            'rgb(0, 128, 0)',
+            'rgb(255, 255, 0)',
+            'rgb(255, 0, 0)',
+            'rgb(0, 216, 255)',
+            'rgb(144, 0, 115)'
+          ],
+         hoverOffset: 4
+        }]
+      };
+    const config = {
+        type: 'doughnut',
+        data: data,
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: '#fff'
+                    }
+                }
+            }
+        }
+      };
+      myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      
+      );
+      
+      
     changer();
+   
+
 }
 
     socket.on ('weather', function(data){
         weather1 = data;
         document.getElementById("weather").innerHTML = weather1;
         document.getElementById("wstyle").style.backgroundColor = weathSwitcher[weather1]
-        
+       
           changer();
     })
     
@@ -35,8 +84,12 @@ function setup() {
         document.getElementById("pred").innerHTML = counts.grassEaterEater;
         document.getElementById("trash").innerHTML = counts.trashes;
         document.getElementById("trasher").innerHTML = counts.trashers;
-        document.getElementById("grP").value = counts.grass / 100;
+        
+        myChart.data.datasets[0].data = [counts.grass, counts.grassEater, counts.grassEaterEater, counts.trashes, counts.trashers];
+        myChart.update();
     })
+
+ 
 weathSwitcher = {
     winter: "white",
     spring: "#62D319",
@@ -45,7 +98,7 @@ weathSwitcher = {
 }
 
 function painter(matrix) {
-
+    
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
           
@@ -68,7 +121,7 @@ function painter(matrix) {
                 fill('#900073');
             }
             else {
-                fill('gray');
+                fill('#31303C');
             }
             rect(x * side, y * side, side, side);
            

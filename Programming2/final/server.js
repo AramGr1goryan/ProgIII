@@ -44,7 +44,7 @@ for (let i = 0; i < n; i++) {
 
     }
 }
-console.log(matrix);
+
 io.sockets.emit("send matrix", matrix);
 
 
@@ -187,7 +187,15 @@ function killPred() {
 }
 
 function spawnBoom() {
-    //.......
+    for (var i = 0; i < 5; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 5
+            trasherArr.push(new trasher(x, y, 5));
+        }
+    }
+    io.sockets.emit("send matrix", matrix);
 }
 function changeWeather() {
     weat();
@@ -202,9 +210,9 @@ function alldatas() {
         trashers: trasherArr.length
     }
     fs.writeFile("statistics.json", JSON.stringify(countd), function () {
-        // console.log("send")
+        io.sockets.emit("send datas", countd)
     })
-    io.sockets.emit("send datas", countd)
+    // io.sockets.emit("send datas", countd)
 }
 setInterval(alldatas, 300);
 
